@@ -6,14 +6,19 @@ import first from '../assests/1.jpg';
 import second from '../assests/2.jpg';
 import third from '../assests/3.jpg';
 
+const url = process.env.REACT_APP_BACKEND_URL; // Use process.env in CRA
+// console.log("url",url);
+
 export default function Home() {
+  
+
   const [foodCat, setFoodCat] = useState([]);
   const [foodItems, setFoodItems] = useState([]);
   const [search, setSearch] = useState('');
 
   const loadFoodItems = async () => {
     try {
-      let response = await fetch("http://localhost:5000/api/auth/foodData", {
+      let response = await fetch(`${url}/api/auth/foodData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

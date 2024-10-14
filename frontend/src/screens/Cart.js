@@ -1,6 +1,9 @@
 import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useCart, useDispatchCart } from '../components/ContextReducer';
+
+const url = process.env.REACT_APP_BACKEND_URL; // Use process.env in CRA
+
 export default function Cart() {
   let data = useCart();
   let dispatch = useDispatchCart();
@@ -19,7 +22,7 @@ export default function Cart() {
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
-    let response = await fetch("http://localhost:5000/api/auth/orderData", {
+    let response = await fetch(`${url}/api/auth/orderData`, {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: 'POST',
